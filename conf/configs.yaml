@@ -1,0 +1,7 @@
+data_ingestion:
+  data_url: https://archive.ics.uci.edu/static/public/228/sms+spam+collection.zip
+  user_agent: Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)
+  timeout: 100
+  download_status: False
+  external_path: data/external/sms_spam_collection.zip
+  raw_dir: data/raw/
