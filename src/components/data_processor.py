@@ -25,6 +25,13 @@ class DataProcessor:
         self.configs = read_yaml(CONFIGS).data_processor
         self.schema = read_yaml(SCHEMA)
 
+        # Random seed for operations
+        self.random_seed = self.configs.random_seed
+
+        # Class names & column names
+        self.class_names = self.schema.class_names
+        self.column_names = self.schema.column_names
+
         # Input paths
         self.raw_filepath = normpath(self.configs.raw_data_path)
 
@@ -33,7 +40,7 @@ class DataProcessor:
 
     @staticmethod
     def balance_dataframe(
-        df: pd.DataFrame, class_names: list, label_column: str
+        df: pd.DataFrame, class_names: list, label_column: str, random_seed: int
     ) -> pd.DataFrame:
         """_summary_
 
@@ -55,12 +62,14 @@ class DataProcessor:
 
         class_dfs_list = []
         for cls in class_names:
-            part_df = df[df[label_column] == cls].sample(n=balanced_n, random_state=42)
+            part_df = df[df[label_column] == cls].sample(
+                n=balanced_n, random_state=random_seed
+            )
             class_dfs_list.append(part_df)
 
         balanced_df = (
             pd.concat(class_dfs_list, ignore_index=True)
-            .sample(frac=1, random_state=42)
+            .sample(frac=1, random_state=random_seed)
             .reset_index(drop=True)
         )
 
@@ -79,16 +88,14 @@ class DataProcessor:
             self.raw_filepath,
             sep="\t",
             header=None,
-            names=self.schema.column_names,
+            names=self.column_names,
             encoding="utf-8",
         )
 
-        # class names & label column name
-        class_names = self.schema.class_names
-        label_col_name = self.schema.column_names[0]
-
         # Creating a balanced dataframe
-        sms_df = self.balance_dataframe(df, class_names, label_col_name)
+        sms_df = self.balance_dataframe(
+            df, self.class_names, self.column_names[0], self.random_seed
+        )
 
         return sms_df
 

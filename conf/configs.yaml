@@ -9,4 +9,12 @@ data_ingestion:
 data_processor:
   raw_data_path: data/raw/SMSSpamCollection
   processed_data_path: data/processed/sms_data.csv
-  
+  random_seed: 42
+
+data_splitter:
+  processed_data_path: data/processed/sms_data.csv
+  train_data_path: data/train/train_data.csv
+  test_data_path: data/test/test_data.csv
+  test_size_pct: 0.2
+  random_seed: 42
+
