@@ -5,3 +5,8 @@ data_ingestion:
   download_status: False
   external_path: data/external/sms_spam_collection.zip
   raw_dir: data/raw/
+
+data_processor:
+  raw_data_path: data/raw/SMSSpamCollection
+  processed_data_path: data/processed/sms_data.csv
+  
