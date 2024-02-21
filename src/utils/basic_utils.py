@@ -6,12 +6,12 @@ log relevant information for debugging purposes.
 """
 
 import json
-import pickle
 import zipfile
 from os import listdir, makedirs
 from os.path import dirname, normpath
 from typing import Any
 
+import joblib
 import yaml
 from box import Box
 from tabulate import tabulate
@@ -64,43 +64,46 @@ def create_directories(dir_paths: list, verbose=True) -> None:
             logger.info("created directory at: %s", path)
 
 
-def save_as_pickle(file_path: str, model) -> None:
+def save_as_joblib(file_path: str, serialized_object: Any) -> None:
     """
-    Save an object to a pickle file.
+    Save a serialized object using joblib.
 
     Args:
-        file_path (str): The file path where the pickle file will be saved.
-        object (pickle): The object to be saved.
+        file_path (str): The file path where the serialized object will be saved.
+        serialized_object (Any): The object to be serialized and saved.
 
     Raises:
-        CustomException: An exception occurred while saving the object.
+        CustomException: If there is an error during the saving process.
     """
+    save_path = normpath(file_path)
+    makedirs(dirname(save_path), exist_ok=True)
     try:
-        save_path = normpath(file_path)
-        with open(save_path, "wb") as pf:
-            pickle.dump(model, pf)
-            logger.info("pickle file: %s saved successfully", save_path)
+        joblib.dump(serialized_object, save_path)
+        logger.info("object saved at: %s", save_path)
     except Exception as e:
         logger.error(CustomException(e))
         raise CustomException(e) from e
 
 
-def load_pickle(file_path: str) -> Any:
+def load_joblib(file_path: str) -> joblib:
     """
-    Loads a pickle file.
+    This function loads a joblib file from a specified file path.
 
     Args:
-        file_path (str): The file path of the pickle file.
+        file_path (str): The path to the joblib file to be loaded.
+
+    Raises:
+        CustomException: If there is an error in loading the joblib file,
+        a custom exception is raised with the error message.
 
     Returns:
-        Any: The object loaded from the pickle file.
+        joblib: The loaded joblib object
     """
+    saved_path = normpath(file_path)
     try:
-        pickle_path = normpath(file_path)
-        with open(pickle_path, "rb") as pf:
-            loaded_object = pickle.load(pf)
-            logger.info("pickle file: %s loaded successfully", pickle_path)
-            return loaded_object
+        joblib_object = joblib.load(saved_path)
+        logger.info("object loaded from: %s", saved_path)
+        return joblib_object
     except Exception as e:
         logger.error(CustomException(e))
         raise CustomException(e) from e

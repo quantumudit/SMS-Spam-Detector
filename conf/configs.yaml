@@ -23,5 +23,5 @@ data_standardizer:
   test_data_path: data/test/test_data.csv
   train_matrix_path: data/train/train_sparse_matrix.npz
   test_matrix_path: data/test/test_sparse_matrix.npz
-  standardizer_path: models/standardizers/standardizer.pkl
+  standardizer_path: models/standardizers/standardizer.joblib
 
