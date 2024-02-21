@@ -1,2 +1,7 @@
-column_names: ["label", "message"]
-class_names: ["spam", "ham"]
+column_names:
+  label_col: label
+  text_col: message
+
+class_names:
+  spam: 0
+  ham: 1

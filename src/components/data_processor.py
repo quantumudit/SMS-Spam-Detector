@@ -88,13 +88,13 @@ class DataProcessor:
             self.raw_filepath,
             sep="\t",
             header=None,
-            names=self.column_names,
+            names=list(self.column_names.values()),
             encoding="utf-8",
         )
 
         # Creating a balanced dataframe
         sms_df = self.balance_dataframe(
-            df, self.class_names, self.column_names[0], self.random_seed
+            df, list(self.class_names), self.column_names.label_col, self.random_seed
         )
 
         return sms_df

@@ -18,3 +18,10 @@ data_splitter:
   test_size_pct: 0.2
   random_seed: 42
 
+data_standardizer:
+  train_data_path: data/train/train_data.csv
+  test_data_path: data/test/test_data.csv
+  train_matrix_path: data/train/train_sparse_matrix.npz
+  test_matrix_path: data/test/test_sparse_matrix.npz
+  standardizer_path: models/standardizers/standardizer.pkl
+
