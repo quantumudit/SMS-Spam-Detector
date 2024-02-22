@@ -8,6 +8,7 @@ from src.pipelines.stage_01_data_ingestion import DataIngestionPipeline
 from src.pipelines.stage_02_data_processing import DataProcessorPipeline
 from src.pipelines.stage_03_data_splitting import DataSplitterPipeline
 from src.pipelines.stage_04_data_standardization import DataStandardizationPipeline
+from src.pipelines.stage_05_model_training import ModelTrainingPipeline
 
 STAGE_NAME = "Data Ingestion stage"
 
@@ -47,6 +48,17 @@ STAGE_NAME = "Data Standardization Stage"
 try:
     logger.info(">>>>>> %s started <<<<<<", STAGE_NAME)
     obj = DataStandardizationPipeline()
+    obj.main()
+    logger.info(">>>>>> %s completed <<<<<<\n\nx==========x", STAGE_NAME)
+except Exception as e:
+    logger.error(CustomException(e))
+    raise CustomException(e) from e
+
+STAGE_NAME = "Model Training Stage"
+
+try:
+    logger.info(">>>>>> %s started <<<<<<", STAGE_NAME)
+    obj = ModelTrainingPipeline()
     obj.main()
     logger.info(">>>>>> %s completed <<<<<<\n\nx==========x", STAGE_NAME)
 except Exception as e:
