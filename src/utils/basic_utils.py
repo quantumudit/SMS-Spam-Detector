@@ -153,30 +153,6 @@ def dict_to_table(input_dict: dict, column_headers: list) -> str:
     return table_vw
 
 
-def remove_key(d: dict, key_to_remove: str) -> dict:
-    """
-    Removes a specified key from a dictionary and returns the modified dictionary._
-
-    Args:
-        d (dict): The original dictionary.
-        key_to_remove (str): The key to be removed from the dictionary.
-
-    Returns:
-        dict: The modified dictionary with the specified key removed.
-    """
-    try:
-        # Create a copy of the original dictionary
-        new_dict = d.copy()
-
-        # Remove the key from the copied dictionary
-        new_dict.pop(key_to_remove)
-
-        return new_dict
-    except Exception as e:
-        logger.error(CustomException(e))
-        raise CustomException(e) from e
-
-
 def unzip_file(zipfile_path: str, unzip_dir: str) -> str:
     """
     Unzips a file to a specified directory.

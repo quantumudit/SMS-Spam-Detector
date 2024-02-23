@@ -28,3 +28,10 @@ data_standardizer:
 model_trainer:
   train_matrix_path: data/train/train_sparse_matrix.npz
   model_path: models/trained/model.joblib
+
+model_evaluation:
+  train_matrix_path: data/train/train_sparse_matrix.npz
+  test_matrix_path: data/test/test_sparse_matrix.npz
+  model_path: models/trained/model.joblib
+  scores_path: models/scores/model_scores.json
+  predictions_dir: models/predictions/

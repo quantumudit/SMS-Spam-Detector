@@ -5,3 +5,5 @@ column_names:
 class_names:
   spam: 0
   ham: 1
+
+model_name: Multinomial Naive Bayes

@@ -1,0 +1,131 @@
+{
+    "model_name": "Multinomial Naive Bayes",
+    "training_evaluation_metrics": {
+        "classification_metrics": {
+            "Accuracy": 0.989,
+            "Precision": 0.987,
+            "Recall": 0.992,
+            "F1 Score": 0.989
+        },
+        "averages": {
+            "macro avg": {
+                "precision": 0.9891548577608185,
+                "recall": 0.9890973062614854,
+                "f1-score": 0.9891198455837499,
+                "support": 1195.0
+            },
+            "weighted avg": {
+                "precision": 0.9891331690940225,
+                "recall": 0.9891213389121339,
+                "f1-score": 0.9891210189131945,
+                "support": 1195.0
+            }
+        },
+        "classification_report": {
+            "0.0": {
+                "precision": 0.9915110356536503,
+                "recall": 0.9864864864864865,
+                "f1-score": 0.9889923793395428,
+                "support": 592.0
+            },
+            "1.0": {
+                "precision": 0.9867986798679867,
+                "recall": 0.9917081260364843,
+                "f1-score": 0.989247311827957,
+                "support": 603.0
+            }
+        },
+        "confusion_matrix": {
+            "spam": {
+                "TP": 584,
+                "FP": 5,
+                "FN": 8,
+                "TN": 598
+            },
+            "ham": {
+                "TP": 598,
+                "FP": 8,
+                "FN": 5,
+                "TN": 584
+            }
+        },
+        "confusion_matrix_normalized": {
+            "spam": {
+                "TP": 0.9864864864864865,
+                "FP": 0.008291873963515755,
+                "FN": 0.013513513513513514,
+                "TN": 0.9917081260364843
+            },
+            "ham": {
+                "TP": 0.9917081260364843,
+                "FP": 0.013513513513513514,
+                "FN": 0.008291873963515755,
+                "TN": 0.9864864864864865
+            }
+        }
+    },
+    "test_evaluation_metrics": {
+        "classification_metrics": {
+            "Accuracy": 0.946,
+            "Precision": 0.957,
+            "Recall": 0.931,
+            "F1 Score": 0.944
+        },
+        "averages": {
+            "macro avg": {
+                "precision": 0.9471248876909255,
+                "recall": 0.9459229390681003,
+                "f1-score": 0.9463532789091236,
+                "support": 299.0
+            },
+            "weighted avg": {
+                "precision": 0.9467563336308209,
+                "recall": 0.9464882943143813,
+                "f1-score": 0.9464522902063124,
+                "support": 299.0
+            }
+        },
+        "classification_report": {
+            "0.0": {
+                "precision": 0.9371069182389937,
+                "recall": 0.9612903225806452,
+                "f1-score": 0.9490445859872612,
+                "support": 155.0
+            },
+            "1.0": {
+                "precision": 0.9571428571428572,
+                "recall": 0.9305555555555556,
+                "f1-score": 0.9436619718309859,
+                "support": 144.0
+            }
+        },
+        "confusion_matrix": {
+            "spam": {
+                "TP": 149,
+                "FP": 10,
+                "FN": 6,
+                "TN": 134
+            },
+            "ham": {
+                "TP": 134,
+                "FP": 6,
+                "FN": 10,
+                "TN": 149
+            }
+        },
+        "confusion_matrix_normalized": {
+            "spam": {
+                "TP": 0.9612903225806452,
+                "FP": 0.06944444444444445,
+                "FN": 0.03870967741935484,
+                "TN": 0.9305555555555556
+            },
+            "ham": {
+                "TP": 0.9305555555555556,
+                "FP": 0.03870967741935484,
+                "FN": 0.06944444444444445,
+                "TN": 0.9612903225806452
+            }
+        }
+    }
+}
